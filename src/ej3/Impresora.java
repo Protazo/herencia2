@@ -15,27 +15,15 @@ public class Impresora {
     }
 
     public int añadirToner(int sumaToner) {
-        if (sumaToner > 100) {
-            System.out.println("El cartucho es muy grande");
+        if (sumaToner > 100 || sumaToner < 0) {
             return -1;
         }
-        if (this.nivelToner <= 100) {
-            this.nivelToner = this.nivelToner + sumaToner;
 
-
-            if (this.nivelToner > 100) {
-                this.nivelToner = 100;
-                System.out.println("El toner esta lleno, solo puedes llenarlo hasta 100");
-            } else {
-                System.out.println("El toner se ha llenado bien");
-            }
-            return this.nivelToner;
+        if (this.nivelToner + sumaToner > 100) {
+            return -1;
         } else {
-            System.out.println("El toner ya está lleno");
-
-            return -1;
+            this.nivelToner = this.nivelToner + sumaToner;
         }
-
     }
 
     public int imprimir(int numHojas) {
